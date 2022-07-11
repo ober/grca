@@ -1,4 +1,4 @@
-PROJECT := generic
+PROJECT := grca
 
 NAME := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 DOCKER_IMAGE := "gerbil/alpine"

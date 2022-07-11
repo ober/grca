@@ -1,4 +1,4 @@
-(import :ober/generic/client)
+(import :ober/grca/client)
 
 (export
-  (import: :ober/generic/client))
+  (import: :ober/grca/client))

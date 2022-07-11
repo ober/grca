@@ -4,9 +4,9 @@
 (import :std/build-script)
 
 (defbuild-script
-  '("generic/client"
+  '("grca/client"
     (static-exe:
-     "generic/generic"
+     "grca/grca"
      "-cc-options"
      "-I/usr/pkg/include"
      "-ld-options"
