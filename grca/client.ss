@@ -1,6 +1,6 @@
 ;; -*- Gerbil -*-
 ;; ©ober 2022
-;; generic client library
+;; grca client library
 
 (import
   :gerbil/gambit
@@ -23,10 +23,10 @@
 (export #t)
 (declare (not optimize-dead-definitions))
 
-(def version "0.08")
+(def version "0.01")
 
-(def program-name "generic")
-(def config-file "~/.generic.yaml")
+(def program-name "grca")
+(def config-file (format "~~/.~a.yaml" program-name)
 
 (def user-list (hash))
 (def channel-list (hash))
@@ -34,7 +34,7 @@
 ;; Client functions for your app here
 (def (get-chat-list)
   (let-hash (load-config)
-    (let (url (format "https://slack.com/api/conversations.list?token=~a&type=im" .token))
+    (let (url (format "https://grca.com/api/conversations.list?token=~a&type=im" .token))
       (with ([status . body] (rest-call 'get url (default-headers)))
         (unless status
           (error body))
@@ -80,7 +80,7 @@
 
 (def (config)
   (let-hash (load-config)
-    (displayln "Please enter your slack token: ")
+    (displayln (format "Please enter your ~a token: " program-name)
     (let* ((password (read-password ##console-port))
            (cipher (make-aes-256-ctr-cipher))
            (iv (random-bytes (cipher-iv-length cipher)))

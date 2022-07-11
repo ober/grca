@@ -1,6 +1,6 @@
 ;;; -*- Gerbil -*-
 ;;; © ober
-;;; Generic client binary
+;;; grca client binary
 
 (import
   :gerbil/gambit
@@ -35,7 +35,7 @@
   :std/text/utf8
   :std/text/yaml
   :ober/oberlib
-  :ober/generic/client)
+  :ober/grca/client)
 
 (declare (not optimize-dead-definitions))
 
@@ -60,7 +60,7 @@
         (set! count 0))
       (unless (= (length args2) count)
         (usage-verb verb))
-      (apply (eval (string->symbol (string-append "ober/generic/client#" verb))) args2))))
+      (apply (eval (string->symbol (string-append "ober/grca/client#" verb))) args2))))
 
 (def (usage-verb verb)
   (let ((howto (hash-get interactives verb)))
@@ -69,7 +69,7 @@
     (exit 2)))
 
 (def (usage)
-  (displayln (format "Generic: version ~a" version))
+  (displayln (format "grca: version ~a" version))
   (displayln "Verbs:")
   (for (k (sort! (hash-keys interactives) string<?))
     (displayln (format "~a: ~a" k (hash-get (hash-get interactives k) description:))))
